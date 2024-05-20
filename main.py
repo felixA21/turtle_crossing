@@ -22,9 +22,14 @@ while game_is_on:
     car_manager.create_car()
     car_manager.move_cars()
 
-#     Detect collision cars with turtle
+    # Detect collision cars with turtle
     for car in car_manager.all_cars:
         if car.distance(player) < 25:
             game_is_on = False
+
+#       Detect crossing on the other side
+    if player.is_at_finished_line():
+        player.go_to_start()
+        car_manager.level_up()
 
 screen.exitonclick()
